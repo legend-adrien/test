@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+        stage("clone repository"){
+            steps{
+                git branch: 'main', url: 'https://github.com/legend-adrien/test.git'
+            }
+        }
+        stage("compile"){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage("test"){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage("deploy"){
+            steps{
+                sh 'mvn -v'
+            }
+        }
+    }
+}
